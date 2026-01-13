@@ -17,9 +17,13 @@ import {
   X,
   Send
 } from 'lucide-react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
 import Logo from './components/Logo';
 import ServiceCard from './components/ServiceCard';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import AdminLogin from './components/AdminLogin';
 import { GoogleGenAI } from "@google/genai";
 
 // Data from the image flyer
@@ -51,12 +55,25 @@ const App: React.FC = () => {
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<{role: string, text: string}[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [showDashboard, setShowDashboard] = useState(false);
   
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<'contact' | 'training'>('contact');
   const [selectedProgram, setSelectedProgram] = useState<string | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  // Check if user is logged in
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        setShowDashboard(true);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   // Smooth scroll helper
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -118,7 +135,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-900 overflow-x-hidden scroll-smooth">
+    <>
+      {showDashboard && user ? (
+        <Dashboard />
+      ) : showDashboard && !user ? (
+        <AdminLogin onLoginSuccess={() => setShowDashboard(true)} />
+      ) : (
+        <div className="min-h-screen flex flex-col font-sans text-slate-900 overflow-x-hidden scroll-smooth">
       {/* Lead Generation Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
@@ -183,6 +206,12 @@ const App: React.FC = () => {
           <a href="#training" onClick={(e) => scrollToSection(e, 'training')} className="hover:text-[#003366] transition-colors">Training</a>
           <a href="#ceo" onClick={(e) => scrollToSection(e, 'ceo')} className="hover:text-[#003366] transition-colors">Our CEO</a>
           <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-[#003366] transition-colors">Contact</a>
+          <button 
+            onClick={() => setShowDashboard(true)}
+            className="hover:text-[#003366] transition-colors"
+          >
+            Admin
+          </button>
         </div>
         <button 
           onClick={openContactModal}
@@ -524,8 +553,9 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

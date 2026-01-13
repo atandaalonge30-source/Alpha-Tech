@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import Logo from './components/Logo';
 import ServiceCard from './components/ServiceCard';
+import Register from './components/Register';
 import { GoogleGenAI } from "@google/genai";
 
 // Data from the image flyer
@@ -304,6 +305,24 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Registration Section */}
+      <section id="register" className="py-24 bg-gradient-to-b from-gray-50 to-white px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-[#FFCC00] text-[#003366] px-4 py-1 rounded font-black text-xs uppercase mb-4">
+              Join Us
+            </div>
+            <h2 className="text-4xl md:text-5xl font-brand font-extrabold text-[#003366] mb-4">
+              Create Your Account
+            </h2>
+            <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+              Register now to get started with our training programs and services.
+            </p>
+          </div>
+          <Register />
         </div>
       </section>
 

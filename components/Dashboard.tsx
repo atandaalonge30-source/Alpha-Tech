@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
 import { db, auth } from '../src/firebase';
-import { LogOut } from 'lucide-react';
+import { LogOut, Users, TrendingUp, CheckCircle } from 'lucide-react';
 
 export default function Dashboard() {
   const [registrations, setRegistrations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [totalStudents] = useState(300);
 
   useEffect(() => {
     fetchRegistrations();
@@ -62,6 +63,83 @@ export default function Dashboard() {
           </button>
         </div>
 
+        {/* Statistics Cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '20px',
+          marginBottom: '30px'
+        }}>
+          {/* Total Registrations Card */}
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            padding: '20px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            borderLeft: '5px solid #003366'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ padding: '12px', backgroundColor: '#003366', borderRadius: '8px', color: 'white' }}>
+                <Users size={24} />
+              </div>
+              <div>
+                <p style={{ margin: 0, color: '#666', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                  Platform Users
+                </p>
+                <p style={{ margin: '8px 0 0 0', fontSize: '28px', fontWeight: 'bold', color: '#003366' }}>
+                  {registrations.length}+
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Alpha Tech Students Card */}
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            padding: '20px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            borderLeft: '5px solid #FFCC00'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ padding: '12px', backgroundColor: '#FFCC00', borderRadius: '8px', color: '#003366' }}>
+                <TrendingUp size={24} />
+              </div>
+              <div>
+                <p style={{ margin: 0, color: '#666', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                  Total Trained Students
+                </p>
+                <p style={{ margin: '8px 0 0 0', fontSize: '28px', fontWeight: 'bold', color: '#FFCC00' }}>
+                  300+
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Success Rate Card */}
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            padding: '20px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            borderLeft: '5px solid #10b981'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+              <div style={{ padding: '12px', backgroundColor: '#10b981', borderRadius: '8px', color: 'white' }}>
+                <CheckCircle size={24} />
+              </div>
+              <div>
+                <p style={{ margin: 0, color: '#666', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                  Success Rate
+                </p>
+                <p style={{ margin: '8px 0 0 0', fontSize: '28px', fontWeight: 'bold', color: '#10b981' }}>
+                  95%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div style={{
           backgroundColor: 'white',
           borderRadius: '8px',
@@ -69,7 +147,7 @@ export default function Dashboard() {
           boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
         }}>
           <p style={{ marginTop: 0, marginBottom: '20px', color: '#666', fontSize: '16px' }}>
-            Total Registrations: <strong>{registrations.length}</strong>
+            <strong>New Platform Registrations: {registrations.length}</strong>
           </p>
 
           {loading ? (

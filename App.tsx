@@ -24,6 +24,8 @@ import ServiceCard from './components/ServiceCard';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import AdminLogin from './components/AdminLogin';
+import UserLogin from './components/UserLogin';
+import UserProfile from './components/UserProfile';
 import TrainedStudents from './components/TrainedStudents';
 import { GoogleGenAI } from "@google/genai";
 
@@ -58,6 +60,9 @@ const App: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [userType, setUserType] = useState<'regular' | 'admin' | null>(null); // Track user type
+  const [showUserLogin, setShowUserLogin] = useState(false); // Track if showing user login
+  const [showUserProfile, setShowUserProfile] = useState(false); // Track if showing user profile
   
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,7 +75,17 @@ const App: React.FC = () => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        setShowDashboard(true);
+        // Check if user is admin or regular user
+        // For now, we'll assume regular users unless they login via admin login
+        // If they came through normal login, show their profile
+        if (!showDashboard) {
+          setUserType('regular');
+          setShowUserProfile(true);
+        }
+      } else {
+        setShowUserProfile(false);
+        setShowDashboard(false);
+        setUserType(null);
       }
     });
     return unsubscribe;
@@ -137,11 +152,26 @@ const App: React.FC = () => {
 
   return (
     <>
-      {showDashboard && user ? (
+      {/* Admin Dashboard - shown when admin logs in */}
+      {showDashboard && user && userType === 'admin' ? (
         <Dashboard />
-      ) : showDashboard && !user ? (
+      ) : showDashboard && !user && userType === 'admin' ? (
         <AdminLogin onLoginSuccess={() => setShowDashboard(true)} />
-      ) : (
+      ) : 
+      /* User Profile - shown when regular user logs in */
+      showUserProfile && user && userType === 'regular' ? (
+        <UserProfile userId={user.uid} />
+      ) :
+      /* User Login - shown when user clicks login button */
+      showUserLogin ? (
+        <UserLogin onLoginSuccess={() => {
+          setShowUserLogin(false);
+          setShowUserProfile(true);
+          setUserType('regular');
+        }} />
+      ) :
+      /* Main Website - default view */
+      (
         <div className="min-h-screen flex flex-col font-sans text-slate-900 overflow-x-hidden scroll-smooth">
       {/* Lead Generation Modal */}
       {isModalOpen && (
@@ -209,10 +239,13 @@ const App: React.FC = () => {
           <a href="#ceo" onClick={(e) => scrollToSection(e, 'ceo')} className="hover:text-[#003366] transition-colors">Our CEO</a>
           <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-[#003366] transition-colors">Contact</a>
           <button 
-            onClick={() => setShowDashboard(true)}
-            className="hover:text-[#003366] transition-colors"
+            onClick={() => {
+              setShowDashboard(true);
+              setUserType('admin');
+            }}
+            className="hover:text-[#003366] transition-colors font-bold text-sm"
           >
-            Admin
+            Admin Portal
           </button>
         </div>
         <button 
@@ -356,7 +389,32 @@ const App: React.FC = () => {
               Register now to get started with our training programs and services.
             </p>
           </div>
-          <Register />
+
+          {/* Register and Login Tabs */}
+          <div className="max-w-2xl mx-auto mb-8 flex gap-4 justify-center">
+            <button 
+              onClick={() => setShowUserLogin(false)}
+              className="px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:shadow-lg transition-all"
+            >
+              Create Account
+            </button>
+            <button 
+              onClick={() => setShowUserLogin(true)}
+              className="px-8 py-3 border-2 border-[#003366] text-[#003366] font-bold rounded-lg hover:bg-[#003366] hover:text-white transition-all"
+            >
+              Login to Account
+            </button>
+          </div>
+
+          {showUserLogin ? (
+            <UserLogin onLoginSuccess={() => {
+              setShowUserLogin(false);
+              setShowUserProfile(true);
+              setUserType('regular');
+            }} />
+          ) : (
+            <Register />
+          )}
         </div>
       </section>
 

@@ -22,7 +22,7 @@ const TrainedStudents: React.FC = () => {
       icon: <Award className="w-6 h-6" />,
       students: [
         {
-          name: 'Micheal Divine Oluwadammilare',
+          name: 'Nkemdilim Chibuzor Goodluck',
           image: 'https://i.ibb.co/wZxSzRP6/image.jpg',
           specialization: 'UI/UX Designer'
         },
@@ -30,6 +30,11 @@ const TrainedStudents: React.FC = () => {
           name: 'Sunday Ifeoluwa Richard',
           image: 'https://i.ibb.co/Qv0Wn4mJ/image.jpg',
           specialization: 'UI/UX Specialist'
+        },
+        {
+          name: 'Morakinyo Samson Temidayo',
+          image: 'https://res.cloudinary.com/dsylj1xnf/image/upload/v1768918582/samson_rbgs9c.jpg',
+          specialization: 'UI/UX Designer'
         }
       ]
     },
@@ -40,8 +45,13 @@ const TrainedStudents: React.FC = () => {
       icon: <Users className="w-6 h-6" />,
       students: [
         {
-          name: 'Nkemdilim Chibuzor Goodluck',
+          name: 'Micheal Divine Oluwadammilare',
           image: 'https://i.ibb.co/HDY0ZNGN/image.jpg',
+          specialization: 'Full-Stack Developer'
+        },
+        {
+          name: 'Busari Abdulhaqq Dolapo',
+          image: 'https://res.cloudinary.com/dsylj1xnf/image/upload/v1768918495/BUSARI_usrydx.jpg',
           specialization: 'Full-Stack Developer'
         }
       ]

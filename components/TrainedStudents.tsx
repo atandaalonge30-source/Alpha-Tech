@@ -23,12 +23,12 @@ const TrainedStudents: React.FC = () => {
       students: [
         {
           name: 'Micheal Divine Oluwadammilare',
-          image: 'https://ibb.co/wZxSzRP6',
+          image: 'https://i.ibb.co/wZxSzRP6/image.jpg',
           specialization: 'UI/UX Designer'
         },
         {
           name: 'Sunday Ifeoluwa Richard',
-          image: 'https://ibb.co/Qv0Wn4mJ',
+          image: 'https://i.ibb.co/Qv0Wn4mJ/image.jpg',
           specialization: 'UI/UX Specialist'
         }
       ]
@@ -41,7 +41,7 @@ const TrainedStudents: React.FC = () => {
       students: [
         {
           name: 'Nkemdilim Chibuzor Goodluck',
-          image: 'https://ibb.co/HDY0ZNGN',
+          image: 'https://i.ibb.co/HDY0ZNGN/image.jpg',
           specialization: 'Full-Stack Developer'
         }
       ]

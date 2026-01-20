@@ -402,7 +402,7 @@ const App: React.FC = () => {
                 <div className="absolute inset-0 bg-[#FFCC00] rounded-3xl rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
                 <div className="relative overflow-hidden rounded-3xl bg-slate-800 w-full max-w-sm aspect-[4/5] shadow-2xl">
                   <img 
-                    src="https://ibb.co/84j80BW0" 
+                    src="https://i.ibb.co/84j80BW0/image.jpg" 
                     alt="Alonge Muhammed Ademola" 
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   />

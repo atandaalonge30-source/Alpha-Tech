@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
-import { db, auth } from '../firebase';
+import { db, auth } from '../src/firebase';
 import { LogOut } from 'lucide-react';
 
 export default function Dashboard() {

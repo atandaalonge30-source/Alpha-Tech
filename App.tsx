@@ -397,19 +397,13 @@ const App: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="lg:w-1/2 flex justify-center">
-              <div className="relative group">
-                <div className="relative overflow-hidden rounded-3xl bg-slate-800 w-full max-w-2xl aspect-auto shadow-2xl">
-                  <img 
-                    src="https://i.ibb.co/84j80BW0/image.jpg" 
-                    alt="Alonge Muhammed Ademola" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <p className="font-brand text-2xl font-bold">Alonge Muhammed Ademola</p>
-                    <p className="text-gray-300 text-sm">Founder & CEO, Alpha Tech</p>
-                  </div>
-                </div>
+            <div className="lg:w-1/2 flex justify-center items-center">
+              <div className="w-full">
+                <img 
+                  src="https://i.ibb.co/84j80BW0/image.jpg" 
+                  alt="Alonge Muhammed Ademola" 
+                  className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+                />
               </div>
             </div>
           </div>

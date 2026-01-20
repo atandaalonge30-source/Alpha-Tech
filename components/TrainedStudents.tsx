@@ -53,6 +53,11 @@ const TrainedStudents: React.FC = () => {
           name: 'Busari Abdulhaqq Dolapo',
           image: 'https://res.cloudinary.com/dsylj1xnf/image/upload/v1768918495/BUSARI_usrydx.jpg',
           specialization: 'Full-Stack Developer'
+        },
+        {
+          name: 'Ayantade David Tolulope',
+          image: 'https://res.cloudinary.com/dsylj1xnf/image/upload/v1768919915/AYANTADE_v7dsn7.jpg',
+          specialization: 'Front-End Developer'
         }
       ]
     }

@@ -402,7 +402,9 @@ const App: React.FC = () => {
                 <img 
                   src="https://i.ibb.co/84j80BW0/image.jpg" 
                   alt="Alonge Muhammed Ademola" 
-                  className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

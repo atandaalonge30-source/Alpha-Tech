@@ -230,11 +230,11 @@ const TrainedStudents: React.FC = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#FFCC00] opacity-5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-[#003366]/10 group-hover:bg-[#FFCC00] text-[#003366] rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300">
-                  <Target className="w-7 h-7" />
+                  <Zap className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-[#003366] mb-3">Job Placement Support</h3>
+                <h3 className="text-xl font-bold text-[#003366] mb-3">Real-World Projects</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Get dedicated career guidance and placement assistance with our network of 50+ hiring partner companies.
+                  Build portfolios with practical projects that demonstrate your capabilities to potential employers.
                 </p>
               </div>
             </div>

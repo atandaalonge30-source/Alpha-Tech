@@ -238,15 +238,6 @@ const App: React.FC = () => {
           <a href="#students" onClick={(e) => scrollToSection(e, 'students')} className="hover:text-[#003366] transition-colors">Students</a>
           <a href="#ceo" onClick={(e) => scrollToSection(e, 'ceo')} className="hover:text-[#003366] transition-colors">Our CEO</a>
           <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-[#003366] transition-colors">Contact</a>
-          <button 
-            onClick={() => {
-              setShowDashboard(true);
-              setUserType('admin');
-            }}
-            className="hover:text-[#003366] transition-colors font-bold text-sm"
-          >
-            Admin Portal
-          </button>
         </div>
         <button 
           onClick={openContactModal}

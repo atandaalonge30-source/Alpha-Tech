@@ -399,12 +399,11 @@ const App: React.FC = () => {
             </div>
             <div className="lg:w-1/2 flex justify-center">
               <div className="relative group">
-                <div className="absolute inset-0 bg-[#FFCC00] rounded-3xl rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
                 <div className="relative overflow-hidden rounded-3xl bg-slate-800 w-full max-w-sm aspect-[4/5] shadow-2xl">
                   <img 
                     src="https://i.ibb.co/84j80BW0/image.jpg" 
                     alt="Alonge Muhammed Ademola" 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
                     <p className="font-brand text-2xl font-bold">Alonge Muhammed Ademola</p>

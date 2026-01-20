@@ -18,12 +18,13 @@ import {
   Send
 } from 'lucide-react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './firebase';
+import { auth } from './src/firebase';
 import Logo from './components/Logo';
 import ServiceCard from './components/ServiceCard';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import AdminLogin from './components/AdminLogin';
+import TrainedStudents from './components/TrainedStudents';
 import { GoogleGenAI } from "@google/genai";
 
 // Data from the image flyer
@@ -204,6 +205,7 @@ const App: React.FC = () => {
         <div className="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider text-slate-600">
           <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="hover:text-[#003366] transition-colors">Services</a>
           <a href="#training" onClick={(e) => scrollToSection(e, 'training')} className="hover:text-[#003366] transition-colors">Training</a>
+          <a href="#students" onClick={(e) => scrollToSection(e, 'students')} className="hover:text-[#003366] transition-colors">Students</a>
           <a href="#ceo" onClick={(e) => scrollToSection(e, 'ceo')} className="hover:text-[#003366] transition-colors">Our CEO</a>
           <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-[#003366] transition-colors">Contact</a>
           <button 
@@ -337,6 +339,9 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Trained Students Section */}
+      <TrainedStudents />
+
       {/* Registration Section */}
       <section id="register" className="py-24 bg-gradient-to-b from-gray-50 to-white px-6">
         <div className="max-w-6xl mx-auto">
@@ -368,10 +373,16 @@ const App: React.FC = () => {
               </div>
               <h2 className="text-4xl md:text-5xl font-brand font-extrabold leading-tight">
                 Meet Our Visionary Leader, <br />
-                <span className="text-[#FFCC00]">Alonge Muhammed</span>
+                <span className="text-[#FFCC00]">Alonge Muhammed Ademola</span>
               </h2>
-              <p className="text-blue-100 text-lg leading-relaxed">
-                "Our mission at ALPHA TECH is to bridge the gap between abstract academic concepts and concrete digital excellence. We don't just provide services; we build legacies through research and technology."
+              <p className="text-blue-100 text-lg leading-relaxed mb-4">
+                My name is Alonge Muhammed, the Founder and CEO of Alpha Tech Company. I am a multidisciplinary professional with expertise in UI/UX Design, Product Management, Technical Writing, and Data Analysis.
+              </p>
+              <p className="text-blue-100 text-base leading-relaxed mb-4">
+                My work involves extensive research, documentation, and strategic product development, with a strong commitment to originality, integrity, and excellence. At Alpha Tech, we do not engage in plagiarism—every project is carefully researched and uniquely crafted to deliver high-quality, innovative, and reliable solutions.
+              </p>
+              <p className="text-blue-100 text-base leading-relaxed">
+                In addition to my professional practice, I am also a tutor and mentor, training students in various tech skills most notably UI/UX Design and Data Analysis to help them build practical, industry-ready expertise.
               </p>
               <div className="flex items-center space-x-4">
                 <div className="h-1 w-12 bg-[#FFCC00]"></div>
@@ -391,13 +402,13 @@ const App: React.FC = () => {
                 <div className="absolute inset-0 bg-[#FFCC00] rounded-3xl rotate-6 group-hover:rotate-3 transition-transform duration-500"></div>
                 <div className="relative overflow-hidden rounded-3xl bg-slate-800 w-full max-w-sm aspect-[4/5] shadow-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1519085184528-7cba7f1e7b67?q=80&w=1974&auto=format&fit=crop" 
-                    alt="Alonge Muhammed" 
+                    src="https://ibb.co/84j80BW0" 
+                    alt="Alonge Muhammed Ademola" 
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <p className="font-brand text-2xl font-bold">Alonge Muhammed</p>
-                    <p className="text-gray-300 text-sm">Strategic Digital Consultant</p>
+                    <p className="font-brand text-2xl font-bold">Alonge Muhammed Ademola</p>
+                    <p className="text-gray-300 text-sm">Founder & CEO, Alpha Tech</p>
                   </div>
                 </div>
               </div>
@@ -553,6 +564,97 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Floating AI Assistant Toggle */}
+      <button 
+        onClick={() => setChatOpen(!chatOpen)}
+        className="fixed bottom-8 right-8 z-[100] w-16 h-16 bg-[#FFCC00] text-[#003366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform"
+      >
+        <MessageSquare className="w-8 h-8" />
+      </button>
+
+      {/* Chat Window */}
+      {chatOpen && (
+        <div className="fixed bottom-28 right-8 z-[100] w-[90vw] md:w-96 h-[500px] bg-white rounded-3xl shadow-2xl flex flex-col border border-gray-100 overflow-hidden animate-in slide-in-from-bottom-5">
+          <div className="bg-[#003366] p-6 text-white flex justify-between items-center">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-[#FFCC00] rounded-full flex items-center justify-center">
+                <User className="w-4 h-4 text-[#003366]" />
+              </div>
+              <div>
+                <h3 className="font-bold text-sm">Alpha Assistant</h3>
+                <div className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-1 animate-pulse"></span>
+                  <p className="text-[10px] text-blue-200 uppercase tracking-tighter">Online Now</p>
+                </div>
+              </div>
+            </div>
+            <button onClick={() => setChatOpen(false)} className="text-white/60 hover:text-white p-1">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50">
+            {chatHistory.length === 0 && (
+              <div className="text-center py-10 px-4">
+                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <p className="text-slate-500 text-sm">Hello! I'm the Alpha Tech Assistant. How can I guide you today?</p>
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                   {['Training Fees', 'Contact CEO', 'Writing Services'].map(q => (
+                     <button 
+                        key={q} 
+                        onClick={() => {setChatMessage(q);}}
+                        className="text-[10px] bg-white border border-gray-200 px-3 py-1 rounded-full text-slate-500 hover:bg-gray-100"
+                      >
+                       {q}
+                     </button>
+                   ))}
+                </div>
+              </div>
+            )}
+            {chatHistory.map((chat, i) => (
+              <div key={i} className={`flex ${chat.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                  chat.role === 'user' 
+                  ? 'bg-[#003366] text-white rounded-tr-none' 
+                  : 'bg-white text-slate-700 shadow-sm border border-gray-200 rounded-tl-none'
+                }`}>
+                  {chat.text}
+                </div>
+              </div>
+            ))}
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="bg-white border border-gray-200 p-3 rounded-2xl rounded-tl-none flex space-x-1">
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce delay-75"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce delay-150"></div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="p-4 bg-white border-t">
+            <div className="flex space-x-2">
+              <input 
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                placeholder="Type your question..."
+                className="flex-1 bg-gray-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-[#003366]"
+              />
+              <button 
+                onClick={handleSendMessage}
+                disabled={!chatMessage.trim() || isTyping}
+                className="bg-[#003366] text-white p-2 rounded-xl disabled:opacity-50 active:scale-95 transition-transform"
+              >
+                <Send className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
         </div>
       )}
     </>

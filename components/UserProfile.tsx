@@ -32,7 +32,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
       description: 'Master user-centric design principles, wireframing, prototyping, and high-fidelity design in Figma.',
       priceNGN: 150000,
       priceUSD: 98,
-      duration: '8 weeks',
+      duration: '8 weeks + 1 month project',
       level: 'Beginner to Advanced'
     },
     {
@@ -41,7 +41,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
       description: 'Full-stack web development with React, Node.js, and modern frameworks. Build real-world projects.',
       priceNGN: 200000,
       priceUSD: 130,
-      duration: '12 weeks',
+      duration: '12 weeks + 1 month project',
       level: 'Intermediate to Advanced'
     },
     {
@@ -50,7 +50,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
       description: 'Transform data into insights using Python, SQL, and analytics tools. Coming soon!',
       priceNGN: 0,
       priceUSD: 0,
-      duration: '10 weeks',
+      duration: '10 weeks + 1 month project',
       level: 'Intermediate',
       enrolled: false
     },
@@ -60,7 +60,7 @@ export default function UserProfile({ userId }: UserProfileProps) {
       description: 'Master MS Word, Excel, PowerPoint, and essential office tools. Perfect for beginners.',
       priceNGN: 70000,
       priceUSD: 46,
-      duration: '4 weeks',
+      duration: '4 weeks + 1 month project',
       level: 'Beginner'
     }
   ];

@@ -400,7 +400,7 @@ const App: React.FC = () => {
             <div className="lg:w-1/2 flex justify-center items-center">
               <div className="w-full">
                 <img 
-                  src="https://i.ibb.co/84j80BW0/image.jpg" 
+                  src="https://i.ibb.co/HLbqvFbk/image.jpg" 
                   alt="Alonge Muhammed Ademola" 
                   className="w-full h-auto rounded-2xl shadow-2xl"
                   loading="lazy"

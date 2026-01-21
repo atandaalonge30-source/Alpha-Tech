@@ -277,9 +277,11 @@ const TrainedStudents: React.FC = () => {
           <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
             Be part of the next generation of tech professionals. Our comprehensive training programs are designed to accelerate your career growth. Start your journey today with Alpha Tech!
           </p>
-          <button className="px-10 py-4 bg-[#FFCC00] text-[#003366] font-bold rounded-xl shadow-lg shadow-yellow-500/20 hover:scale-105 active:scale-95 transition-all text-lg">
-            Enroll Now & Transform Your Career
-          </button>
+      <a href="#register">
+  <button className="px-10 py-4 bg-[#FFCC00] text-[#003366] font-bold rounded-xl shadow-lg shadow-yellow-500/20 hover:scale-105 active:scale-95 transition-all text-lg">
+    Enroll Now & Transform Your Career
+  </button>
+</a>
         </div>
       </div>
     </section>

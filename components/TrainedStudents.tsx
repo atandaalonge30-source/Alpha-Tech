@@ -156,7 +156,7 @@ const TrainedStudents: React.FC = () => {
                 <p className="text-sm text-slate-600 font-semibold">Success Rate</p>
               </div>
               <div className="bg-white/80 backdrop-blur rounded-2xl p-4">
-                <p className="text-2xl font-extrabold text-[#003366]">50+</p>
+                <p className="text-2xl font-extrabold text-[#003366]">5+</p>
                 <p className="text-sm text-slate-600 font-semibold">Partner Companies</p>
               </div>
               <div className="bg-white/80 backdrop-blur rounded-2xl p-4">
